@@ -1,129 +1,127 @@
-<?php
-include_once 'database_connect.inc.php';
-session_start();
 
-$idcd = $_SESSION["id_candidat"];
+<?php
+//Calcul Du Score
+    if($sth){
+        $msg = "<script>alert(\"Votre inscription a été effecuté avec succes.\")</script>";
+        echo $msg;
+        $idcd = $_SESSION["id_candidat"];
+        echo $idcd;
 $sqlfram = "SELECT NomFramework FROM frameworks where frameworks.Id_candidat = '$idcd';";
 $exec = $cnx->query($sqlfram);
-$framework = $exec->fetchColumn();
+$framework = $exec->fetchAll();
 
 $sqlprog = "SELECT Langage FROM langages_de_programmation where langages_de_programmation.Id_candidat = '$idcd';";
 $exec = $cnx->query($sqlprog);
-$prog = $exec->fetchColumn();
+$prog = $exec->fetchAll();
 
 $sqlcv = "SELECT Categorie FROM `cv` WHERE Id_candidat = $idcd";
 $exec = $cnx->query($sqlcv);
-$personal = $exec->fetchColumn();
+$categorie = $exec->fetchColumn();
 
 $sqlexp = "SELECT Poste FROM `experiences` WHERE Id_candidat = $idcd";
 $exec = $cnx->query($sqlexp);
 $exp = $exec->fetchColumn();
-
+echo $categorie;
 $score = 0;
-if($categorie = "Web Dev"){
+if($categorie == "Web dev"){
 	foreach ($prog as $row) {
 
-		if($row["Langage"] = "html" || $row["Langage"] = "css" || $row["Langage"] = "javascript" || $row["Langage"] = "php" || $row["Langage"] = "sql"){
+		if($row["Langage"] == "Html" || $row["Langage"] =="Css" || $row["Langage"] == "Js" || $row["Langage"] == "Php" || $row["Langage"] == "Sql"){
 			$score += 3;
 		} 
-		if($row["Langage"] = "ruby" || $row["Langage"] = "python" || $row["Langage"] = "c++"){
+		if($row["Langage"] == "Ruby" || $row["Langage"] =="Python" || $row["Langage"] == "C++"){
 			$score += 2;
+        
 		}
-		if($row["langage"] = "java" || $row["langage"] = "git" || $row["langage"] = "C" || $row["langage"] = "Bash" || $row["langage"] = "C#"){
+		if($row["Langage"] == "Java" || $row["Langage"] == "git" || $row["Langage"] =="C" || $row["Langage"] == "Bash" || $row["Langage"] == "C#"){
 			$score += 1;
-		}}
+		}
+    }
 		foreach ($framework as $row) {
-		if($row["NomFramework"] = "bootstrap"){
+		if($row["NomFramework"] == "Bootstrap"){
 			$score += 3;
 		}
 		
-		if($row["NomFramework"] = "angular" || $row["NomFramework"] = "Express.js" || $row["NomFramework"] = "React.js" || $row["NomFramework"] = "Flutter"){
+		if($row["NomFramework"] == "Angular" || $row["NomFramework"] == "Express.js" || $row["NomFramework"] == "React.js" || $row["NomFramework"] == "Flutter"){
 			$score +=2;
 		}
 		
-		if($row["NomFramework"] = "Cordova" || $row["NomFramework"] = "NAtvieIOS" || $row["NomFramework"] = "Django" || $row["NomFramework"] = "ReactNative" ||
-		 $row["NomFramework"] = "RubyOnRails" || $row["NomFramework"] = "NativeAndroid" || $row["NomFramework"] = "Vue.js" || $row["NomFramework"] = "Spring" || 
-		 $row["NomFramework"] = "Meteor" ){
+		if($row["NomFramework"] == "Cordova" || $row["NomFramework"] == "NAtvieIOS" || $row["NomFramework"] == "Django" || $row["NomFramework"] == "ReactNative" ||
+		 $row["NomFramework"] == "RubyOnRails" || $row["NomFramework"] == "NativeAndroid" || $row["NomFramework"] == "Vue.js" || $row["NomFramework"] == "Spring" || 
+		 $row["NomFramework"] == "Meteor" ){
 			$score += 1;
 		}}
 		// tableau experience
-		foreach($exp as $row){
-			if(isset($row["Id_experience"])){
-				$score += 1;
-			}
-	}
+        if(isset($exp)){
+            $score += 1;
+    }
+
 
 }
-else if($categorie = "Appweb dev"){
-	foreach ($prof as $row) {
-		if($row["Langage"] = "python" || $row["Langage"] = "java" || $row["Langage"] = "javascript" || $row["Langage"] = "ruby" || $row["Langage"] = "C#"){
+else if($categorie == "Appweb dev"){
+	foreach ($prog as $row) {
+		if($row["Langage"] == "Python" || $row["Langage"] == "Java" || $row["Langage"] == "Js" || $row["Langage"] == "Ruby" || $row["Langage"] == "C#"){
 			$score += 3;
 		}
-		if($row["Langage"] = "c++" ||  $row["Langage"] = "php" || $row["Langage"] = "sql" || $row["Langage"] = "html"){
+		if($row["Langage"] == "C++" ||  $row["Langage"] == "Php" || $row["Langage"] == "Sql" || $row["Langage"] == "Html"){
 			$score += 2;
 		}
-		if($row["Langage"] = "css" ||  $row["langage"] = "git" || $row["langage"] = "C" || $row["langage"] = "Bash"   ){
+		if($row["Langage"] == "Css" ||  $row["langage"] == "git" || $row["langage"] == "C" || $row["langage"] == "Bash"   ){
 			$score += 1;
 		}}
 		foreach($framework as $row){
 
-		if($row["NomFramework"] = "NAtvieIOS" || $row["NomFramework"] = "NativeAndroid" || $row["NomFramework"] = "ReactNative" || $row["NomFramework"] = "Cordova" 
-		|| $row["NomFramework"] = "Flutter" || $row["NomFramework"] = "Spring"){
+		if($row["NomFramework"] == "NAtvieIOS" || $row["NomFramework"] == "NativeAndroid" || $row["NomFramework"] == "ReactNative" || $row["NomFramework"] == "Cordova" 
+		|| $row["NomFramework"] == "Flutter" || $row["NomFramework"] == "Spring"){
 			$score += 3;
 		}
 		
-		if($row["NomFramework"] = "Django"  || $row["NomFramework"] = "bootstrap" || $row["NomFramework"] = "angular" || $row["NomFramework"] = "Express.js" || 
-		$row["NomFramework"] = "React.js" || 
-		 $row["NomFramework"] = "RubyOnRails"  || $row["NomFramework"] = "Vue.js"  || $row["NomFramework"] = "Meteor" ){
+		if($row["NomFramework"] == "Django"  || $row["NomFramework"] == "bootstrap" || $row["NomFramework"] == "Angular" || $row["NomFramework"] == "Express.js" || 
+		$row["NomFramework"] == "React.js" || $row["NomFramework"] == "RubyOnRails"  || $row["NomFramework"] == "Vue.js"  || $row["NomFramework"] == "Meteor" ){
 			$score += 1;
 		}
 	}
 
 		// tableau experience
-		foreach($exp as $row){
-			if(isset($row["Id_experience"])){
+
+			if(isset($exp)){
 				$score += 1;
-			}
-	}
+        }
 
 }
-else if ($categorie = "App mobile"){
+else if ($categorie == "App mobile"){
 	foreach ($prog as $row) {
-		if($row["Langage"] = "html" || $row["Langage"] = "css" || $row["Langage"] = "javascript" || $row["Langage"] = "php" || $row["Langage"] = "sql"  ||
-		$row["Langage"] = "ruby" ){
+		if($row["Langage"] == "Html" || $row["Langage"] == "Css" || $row["Langage"] == "Js" || $row["Langage"] == "Php" || $row["Langage"] == "Sql"  ||
+		$row["Langage"] == "Ruby" ){
 		   $score += 3 ;
 	   }  
-	   if($row["Langage"] = "python"){
+	   if($row["Langage"] == "Python"){
 		$score += 2;
 		}
-		if( $row["Langage"] = "c++" || $row["langage"] = "java" || $row["langage"] = "git" || $row["langage"] = "C" || $row["langage"] = "Bash" || $row["langage"] = "C#" ){
+		if( $row["Langage"] == "C++" || $row["langage"] == "Java" || $row["langage"] == "git" || $row["langage"] == "C" || $row["langage"] == "Bash" || $row["langage"] == "C#" ){
 			$score += 1 ;
 		}  }
-	if($row["NomFramework"] = "Django"  || $row["NomFramework"] = "React.js" || 
-		 $row["NomFramework"] = "RubyOnRails"  || $row["NomFramework"] = "Vue.js" ){
+	if($row["NomFramework"] == "Django"  || $row["NomFramework"] == "React.js" || 
+		 $row["NomFramework"] == "RubyOnRails"  || $row["NomFramework"] == "Vue.js" ){
 			$score += 3;
 		}
 
-		if( $row["NomFramework"] = "Express.js" || $row["NomFramework"] = "Meteor" || $row["NomFramework"] = "Spring"){
+		if( $row["NomFramework"] == "Express.js" || $row["NomFramework"] == "Meteor" || $row["NomFramework"] == "Spring"){
 			$score += 2;
 		}
 
 		foreach ($framework as $row) {
-		if($row["NomFramework"] = "Cordova" || $row["NomFramework"] = "NAtvieIOS"  || $row["NomFramework"] = "ReactNative"  || 
-		$row["NomFramework"] = "NativeAndroid" || $row["NomFramework"] = "bootstrap" ||
-		  $row["NomFramework"] = "angular"  || $row["NomFramework"] = "Flutter" ){
+		if($row["NomFramework"] == "Cordova" || $row["NomFramework"] == "NAtvieIOS"  || $row["NomFramework"] == "ReactNative"  || 
+		$row["NomFramework"] == "NativeAndroid" || $row["NomFramework"] == "Bootstrap" ||
+		  $row["NomFramework"] == "Angular"  || $row["NomFramework"] == "Flutter" ){
 			$score += 1;
 		}}
 
-		if(isset($row["Id_experience"])){
-			$score += 1;
-		}
-		foreach($exp as $row){
-			if(isset($row["Id_experience"])){
-				$score += 1;
-			}
-	}
-$sqlscore = UPDATE `cv` SET `Score` = $score WHERE `cv`.`Id_cv` = $row["Id_cv"] ;
+        if(isset($exp)){
+            $score += 1;
+    }
+
 }
-header("location: profil_candidat.php?id=$idcd");
-?>
+$sqlscore = "UPDATE `cv` SET `Score` = '$score' WHERE `Id_cv` = '$id_cv'";
+$cnx->query($sqlscore);
+header("location: ../index.php");
