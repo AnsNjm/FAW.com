@@ -1,0 +1,222 @@
+body {
+  background-image: url('bg3.png');
+  color: white;
+}
+h3 {
+  color: #d8a31a;
+  text-decoration: underline 1px white;
+}
+.flexi1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.flexi2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.centrer {
+  text-align: center;
+  border-style: double;
+  position: relative;
+}
+.sizepage {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 1);
+
+  flex-wrap: wrap;
+  flex-grow: 1;
+  border-radius: 25px;
+  border-style: groove;
+  background: #203454;
+  padding: 20px;
+  position: relative;
+}
+p.solid {
+  border-style: solid;
+}
+.marg {
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  position: relative;
+}
+.inline {
+  display: inline;
+}
+.select-box {
+  position: relative;
+  width: 300px;
+}
+.select-box select {
+  width: 100%;
+  position: relative;
+  padding: 16px 30px 16px 85px;
+  border-radius: 50px;
+  font: 200 22px arial;
+}
+.text1 {
+  padding: 0.8rem;
+  border: 2px solid;
+  height: 60px;
+  width: 250px;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.text2 {
+  padding: 0.8rem;
+  border: 2px solid;
+  height: 50px;
+  width: 500px;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.text {
+  padding: 0.8rem;
+  border: 2px solid;
+  border-radius: 5px;
+  -ms-text-size-adjust: 1fr;
+  max-width: none;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.display {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+ 
+}
+
+.stuffs {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.text3 {
+  padding: 0.8rem;
+  border: 2px solid;
+  height: 50px;
+  width: 500px;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.text4 {
+  padding: 0.8rem;
+  border: 2px solid;
+  height: 24px;
+  width: 700px;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+
+.text5 {
+  padding: 0.8rem;
+  border: 2px solid;
+  height: 30px;
+  width: 700px;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.display1 {
+  gap: 1000px;
+}
+.case {
+  padding: 0.8rem;
+  border: 2px solid;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.button {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 1);
+  border-radius: 25px;
+  border-style: groove;
+  background-color: #ffffff;
+  color: #203454;
+  padding: 10px;
+  width: auto;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.button:hover{
+  background-color: #203454;
+  color: #ffffff;
+}
+
+#framework {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 40px 10px 20px;
+  font-size: 20px;
+  font-family: cursive;
+}
+#framework1 {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 20px 10px 10px;
+  font-size: 20px;
+  font-family:cursive;
+}
+.txt {
+  padding: 0.8rem;
+  border: 2px solid;
+  height: 50px;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.marge {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 100px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  position: relative;
+}
+.case {
+  padding: 0.8rem;
+  border: 2px solid;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+.case1 {
+  padding: 0.8rem;
+  border: 2px solid;
+  border-radius: 5px;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: unset;
+}
+#logo{
+  margin-left:20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.navOptions{
+  font-size: 20px;
+  color: #E2F1FF;
+}
+
+.mybox{
+  float:right;
+   
+    }
